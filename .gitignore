@@ -1,0 +1,9 @@
+# Ignore compiled binaries
+*.exe
+*.dll
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore temporary files
+*.tmp
