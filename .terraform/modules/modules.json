@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"rg_1","Source":"./modules/Azure.ResourceGroup","Dir":"modules/Azure.ResourceGroup"},{"Key":"vnet_1","Source":"./modules/Azure.VirtualNetwork","Dir":"modules/Azure.VirtualNetwork"}]}
