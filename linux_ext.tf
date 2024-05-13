@@ -1,4 +1,4 @@
-resource "azurerm_virtual_machine_extension" "linux_extension" {
+/*resource "azurerm_virtual_machine_extension" "linux_extension" {
   name                 = "CustomScriptExtensionLinuxk"
   virtual_machine_id   = data.azurerm_virtual_machine.vm_ext.id
   publisher            = "Microsoft.Azure.Extensions"
@@ -13,4 +13,4 @@ resource "azurerm_virtual_machine_extension" "linux_extension" {
     environment = "Production"
   }
 }
-
+*/

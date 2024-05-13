@@ -2,7 +2,7 @@
 #              Resource Groups               #
 ##############################################
 
-
+/*
 module "rg_1" {
   source   = "./modules/Azure.ResourceGroup"
   name     = var.rg_1["name"]
@@ -27,13 +27,6 @@ module "vnet_1" {
 ##############################################
 #                    NSG                     #
 ##############################################
-/*data "azurerm_subnet" "nsg_id1" {
-  name                 = var.nsg1["subnet_name"]
-  virtual_network_name = var.vnet_1["name"]
-  resource_group_name  = var.rg_1["name"]
-}
-
-
 module "nsg1" {
   source    = "./modules/Azure.NSG"
   name      = var.nsg1["name"]
@@ -46,7 +39,7 @@ module "nsg1" {
     module.rg_1,
     module.vnet_1
   ]
-}*/
+}
 
 ##############################################
 #             Virtual Machine                #
@@ -75,3 +68,4 @@ module "linux_vm_01" {
   subnet_id       = data.azurerm_subnet.subnet_id.id
   tags            = var.tags
 }
+*/
