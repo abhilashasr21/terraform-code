@@ -88,3 +88,7 @@ variable "linux_vm_01" {
     }))
   })
 }
+
+variable "storage_account_name" {
+  type = string
+}

@@ -82,3 +82,5 @@ tags = {
   "Deployment Group" = "Azure CLI"
   "Critical"         = "5"
 }
+
+storage_account_name = "linuxdiagteststaccount"
