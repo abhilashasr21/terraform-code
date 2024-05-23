@@ -40,7 +40,6 @@ module "vnet_1" {
     module.vnet_1
   ]
 }*/
-
 ##############################################
 #             Virtual Machine                #
 ##############################################
@@ -78,3 +77,4 @@ module "st_account" {
   name    = var.storage_account_name
   rg_name = var.rg_1["name"]
 }
+
