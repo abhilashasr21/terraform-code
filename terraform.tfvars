@@ -54,26 +54,26 @@ nsg_rules = {
 
 
 linux_vm_01 = {
-    name = "az-linux-01"
-    size = "Standard_D2S_V3"
-    admin_username = "TestAdmin"
-    admin_password = "TestAdmin@123"
-    os_disk_name = "az-linux-01-OS_disk"
-    subnet_id = "az-subnet-03"
-    image_reference = {
-      publisher = "RedHat"
-      offer = "RHEL"
-      sku = "90-gen2"
-      version = "latest" 
+  name           = "az-linux-01"
+  size           = "Standard_D2s_v3"
+  admin_username = "TestAdmin"
+  admin_password = "TestAdmin@123"
+  os_disk_name   = "az-linux-01-OS_disk"
+  subnet_id      = "az-subnet-03"
+  image_reference = {
+    publisher = "RedHat"
+    offer     = "RHEL"
+    sku       = "90-gen2"
+    version   = "latest"
+  }
+  nic_name = "az-linux-01-nic"
+  ip_configuration = {
+    az-linux-01-nic01 = {
+      name                          = "az-linux-01-nic01"
+      private_ip_address_allocation = "Static"
+      private_ip_address            = "10.0.2.7"
     }
-    nic_name = "az-linux-01-nic"
-    ip_configuration = {
-      az-linux-01-nic01 = {
-        name = "az-linux-01-nic01"
-        private_ip_address_allocation = "Static"
-        private_ip_address = "10.0.2.7" 
-      }
-    }
+  }
 }
 
 tags = {
@@ -83,4 +83,4 @@ tags = {
   "Critical"         = "5"
 }
 
-storage_account_name = "linuxdiagteststaccount"
+storage_account_name = "linuxdiagteststaccount01"

@@ -67,24 +67,24 @@ variable "nsg_rules" {
 ##############################################
 variable "linux_vm_01" {
   type = object({
-    name = string
-    size = string
+    name           = string
+    size           = string
     admin_username = string
     admin_password = string
-    os_disk_name = string
-    subnet_id = string
+    os_disk_name   = string
+    subnet_id      = string
     image_reference = object({
       publisher = string
-      offer = string
-      sku = string
-      version = string 
+      offer     = string
+      sku       = string
+      version   = string
     })
     nic_name = string
     ip_configuration = map(object({
       name = string
       //subnet_id = string
       private_ip_address_allocation = string
-      private_ip_address = string 
+      private_ip_address            = string
     }))
   })
 }
