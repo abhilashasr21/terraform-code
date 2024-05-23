@@ -1,11 +1,11 @@
 #####################################################################################
 #                           Install VM Extension for Diagnostics                    #
 #####################################################################################
-resource "azurerm_virtual_machine_extension" "windows_vm_diagnostics" {
-  /*for_each = {
+/*resource "azurerm_virtual_machine_extension" "windows_vm_diagnostics" {
+  for_each = {
     for k, v in var.vm_list : k => v
     if lower(v.image_offer) == "windowsserver"
-  }*/
+  }
   name                 = "WindowsVMDiagnostics"
   virtual_machine_id   = data.azurerm_virtual_machine.vm_ext_w.id
   publisher            = "Microsoft.Azure.Diagnostics"
@@ -23,3 +23,4 @@ resource "azurerm_virtual_machine_extension" "windows_vm_diagnostics" {
   }
   SETTINGS
 }
+*/

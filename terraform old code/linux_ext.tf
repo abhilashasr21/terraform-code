@@ -27,12 +27,12 @@ resource "azurerm_virtual_machine_extension" "custom_script" {
   }
   SETTINGS
 }
-*/
+
 resource "azurerm_virtual_machine_extension" "linux_vm_diagnostics" {
   /*for_each = {
     for k, v in var.vm_list : k => v
     if lower(v.image_offer) == "windowsserver"
-  }*/
+  }
   name                 = "LinuxVMDiagnostics"
   virtual_machine_id   = data.azurerm_virtual_machine.vm_ext.id
   publisher            = "Microsoft.Azure.Diagnostics"
@@ -50,7 +50,7 @@ resource "azurerm_virtual_machine_extension" "linux_vm_diagnostics" {
   }
   SETTINGS
 }
-
+*/
 
 
 
