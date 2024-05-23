@@ -9,4 +9,4 @@ sudo update-alternatives --remove-all python
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
 # Install any necessary packages or configurations for diagnostics
 # Example: Install sysstat for performance monitoring
-sudo apt-get install -y sysstat
+#sudo apt-get install -y sysstat
