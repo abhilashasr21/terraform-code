@@ -42,7 +42,7 @@ resource "azurerm_linux_virtual_machine" "name" {
 }
 
 resource "azurerm_managed_disk" "disk" {
-  name                 = "datadisk1"
+  name                 = "${var.name}-datadisk1"
   location             = var.location
   resource_group_name  = var.rg_name
   storage_account_type = "Standard_LRS"
