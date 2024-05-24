@@ -1,5 +1,5 @@
 {
-  "StorageAccount": "linuxdiagteststaccount01",
+  "StorageAccount": "${storage_account_name}",
   "ladCfg": {
       "diagnosticMonitorConfiguration": {
           "eventVolume": "Medium",
@@ -12,7 +12,7 @@
                       "scheduledTransferPeriod": "PT1H"
                   }
               ],
-              "resourceId": "/subscriptions/f4a270f4-c469-4215-bef6-b4abaea6815e/resourceGroups/az-rg-01/providers/Microsoft.Compute/virtualMachines/az-linux-02"
+              "resourceId": "${resource_id}"
           },
           "syslogEvents": {
               "syslogEventConfiguration": {

@@ -76,6 +76,29 @@ linux_vm_01 = {
   }
 }
 
+linux_vm_02 = {
+  name           = "az-linux-02"
+  size           = "Standard_D2s_v3"
+  admin_username = "TestAdmin"
+  admin_password = "TestAdmin@123"
+  os_disk_name   = "az-linux-02-OS_disk"
+  subnet_id      = "az-subnet-03"
+  image_reference = {
+    publisher = "RedHat"
+    offer     = "RHEL"
+    sku       = "90-gen2"
+    version   = "latest"
+  }
+  nic_name = "az-linux-02-nic"
+  ip_configuration = {
+    az-linux-01-nic01 = {
+      name                          = "az-linux-01-nic01"
+      private_ip_address_allocation = "Static"
+      private_ip_address            = "10.0.2.8"
+    }
+  }
+}
+
 tags = {
   "Language"         = "Terraform"
   "Environment"      = "Test"
