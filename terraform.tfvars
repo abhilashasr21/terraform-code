@@ -107,3 +107,4 @@ tags = {
 }
 
 storage_account_name = "linuxdiagteststaccount01"
+sas_token = "se=2037-12-31T23%3A59%3A00Z&sp=wlacu&sv=2022-11-02&ss=tb&srt=co&sig=A2XNcDbh6E0hoMUtlDmh5UNst1U4czIqJ%2B6LauYa9yQ%3D"

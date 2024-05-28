@@ -116,3 +116,7 @@ variable "linux_vm_02" {
 variable "storage_account_name" {
   type = string
 }
+
+variable "sas_token" {
+  type = string
+}
