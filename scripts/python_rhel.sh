@@ -4,9 +4,11 @@
 
 # Ensure Python is installed
 cd /
-
+#sudo dnf update
 #For Red Hat
-sudo yum install python2
+sudo dnf install python2 -y
+
+
 sudo update-alternatives --remove-all python
 sudo ln -sf /bin/python2 /bin/python
 

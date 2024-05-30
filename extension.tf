@@ -1,8 +1,8 @@
-locals {
+/*locals {
   settings_content = jsondecode(file("portal_public_settings.json"))
   updated_settings = merge(local.settings_content, {
     storage_account_name = "linuxstacc01"
-    resource_id          = data.azurerm_virtual_machine.u_vm.id
+    resource_id          = data.azurerm_virtual_machine.rhel_vm.id
   })
   sas_token = "se=2037-12-31T23%3A59%3A00Z&sp=wlacu&sv=2022-11-02&ss=tb&srt=co&sig=A2XNcDbh6E0hoMUtlDmh5UNst1U4czIqJ%2B6LauYa9yQ%3D"
 }
@@ -13,7 +13,7 @@ data "azurerm_virtual_machine" "u_vm" {
 }
 
 data "azurerm_virtual_machine" "rhel_vm" {
-  name                = "azlinux03"
+  name                = "az-linux-01"
   resource_group_name = var.rg_1["name"]
 }
 
@@ -61,10 +61,10 @@ resource "azurerm_virtual_machine_extension" "python_extension" {
 
 
 resource "azurerm_virtual_machine_extension" "linux_vm_diagnostics" {
-  /*for_each = {
+  for_each = {
     for k, v in var.vm_list : k => v
     if lower(v.image_offer) == "linuxserver"
-  }*/
+  }
   name                       = "LinuxDiagnostic"
   virtual_machine_id         = data.azurerm_virtual_machine.rhel_vm.id
   auto_upgrade_minor_version = true
