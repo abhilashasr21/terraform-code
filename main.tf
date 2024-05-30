@@ -67,7 +67,7 @@ module "linux_vm_01" {
   ip_configuration = var.linux_vm_01["ip_configuration"]
   subnet_id        = data.azurerm_subnet.subnet_id.id
   tags             = var.tags
-}*/
+}
 
 ##############################################
 #             Storage Account                #
@@ -83,4 +83,4 @@ module "st_account" {
 ##############################################
 module "lb" {
   source = "./modules/Azure.InternalLoadBalancer"
-}
+}*/
