@@ -12,7 +12,7 @@ resource "azurerm_network_interface" "nic" {
       private_ip_address = ip_configuration.value.private_ip_address
     }
   }
-  
+
   tags = var.tags
 }
 
@@ -37,6 +37,9 @@ resource "azurerm_linux_virtual_machine" "name" {
     offer     = var.image_reference["offer"]
     sku       = var.image_reference["sku"]
     version   = var.image_reference["version"]
+  }
+  boot_diagnostics {
+    storage_account_uri = data.azurerm_storage_account.st_account.primary_blob_endpoint
   }
   tags = var.tags
 }

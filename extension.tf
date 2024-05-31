@@ -6,12 +6,6 @@
   })
   sas_token = "se=2037-12-31T23%3A59%3A00Z&sp=wlacu&sv=2022-11-02&ss=tb&srt=co&sig=A2XNcDbh6E0hoMUtlDmh5UNst1U4czIqJ%2B6LauYa9yQ%3D"
 }
-
-data "azurerm_virtual_machine" "u_vm" {
-  name                = "azlinux02"
-  resource_group_name = var.rg_1["name"]
-}
-
 data "azurerm_virtual_machine" "rhel_vm" {
   name                = "az-linux-01"
   resource_group_name = var.rg_1["name"]
