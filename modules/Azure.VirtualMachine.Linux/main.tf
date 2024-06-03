@@ -1,3 +1,11 @@
+resource "azurerm_public_ip" "pip" {
+  name                = var.pip_name
+  resource_group_name = var.rg_name
+  location            = var.location
+  allocation_method   = var.pip_allocation
+  tags = var.tags
+}
+
 resource "azurerm_network_interface" "nic" {
   name = var.nic_name
   location = var.location
@@ -10,6 +18,7 @@ resource "azurerm_network_interface" "nic" {
       subnet_id = var.subnet_id
       private_ip_address_allocation = ip_configuration.value.private_ip_address_allocation
       private_ip_address = ip_configuration.value.private_ip_address
+      public_ip_address_id = azurerm_public_ip.pip.id
     }
   }
 
@@ -24,6 +33,9 @@ resource "azurerm_linux_virtual_machine" "name" {
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   disable_password_authentication = false
+  bypass_platform_safety_checks_on_user_schedule_enabled = true
+  patch_assessment_mode = "AutomaticByPlatform"
+  patch_mode = "AutomaticByPlatform"
   network_interface_ids = [
     azurerm_network_interface.nic.id
   ]

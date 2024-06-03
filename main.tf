@@ -27,20 +27,19 @@ module "vnet_1" {
 ##############################################
 #                    NSG                     #
 ##############################################
-/*module "nsg1" {
+module "nsg1" {
   source    = "./modules/Azure.NSG"
-  name      = var.nsg1["name"]
-  location  = var.rg_1["location"]
+  name      = var.nsg_name
   rg_name   = var.rg_1["name"]
-  subnet_id = data.azurerm_subnet.nsg_id1.id
-  nsg_rules = var.nsg_rules
+  location  = var.rg_1["location"]
   tags      = var.tags
+  subnet_id = data.azurerm_subnet.subnet_id.id
   depends_on = [
     module.rg_1,
     module.vnet_1
   ]
 }
-*/
+
 ##############################################
 #             Virtual Machine                #
 ##############################################
@@ -52,22 +51,24 @@ data "azurerm_subnet" "subnet_id" {
 }
 
 module "linux_vm_01" {
-  source         = "./modules/Azure.VirtualMachine.Linux"
-  name           = var.linux_vm_01["name"]
-  rg_name        = var.rg_1["name"]
-  location       = var.rg_1["location"]
-  size           = var.linux_vm_01["size"]
-  admin_username = var.linux_vm_01["admin_username"]
-  admin_password = var.linux_vm_01["admin_password"]
-  os_disk_name   = var.linux_vm_01["os_disk_name"]
+  source                = "./modules/Azure.VirtualMachine.Linux"
+  name                  = var.linux_vm_01["name"]
+  rg_name               = var.rg_1["name"]
+  location              = var.rg_1["location"]
+  size                  = var.linux_vm_01["size"]
+  admin_username        = var.linux_vm_01["admin_username"]
+  admin_password        = var.linux_vm_01["admin_password"]
+  os_disk_name          = var.linux_vm_01["os_disk_name"]
   //caching         = var.linux_vm_01["caching"]
   //storage_type    = var.linux_vm_01["storage_type"]
-  image_reference  = var.linux_vm_01["image_reference"]
-  nic_name         = var.linux_vm_01["nic_name"]
-  ip_configuration = var.linux_vm_01["ip_configuration"]
-  subnet_id        = data.azurerm_subnet.subnet_id.id
-  tags             = var.tags
-  storage_account_name = var.storage_account_name
+  image_reference       = var.linux_vm_01["image_reference"]
+  nic_name              = var.linux_vm_01["nic_name"]
+  ip_configuration      = var.linux_vm_01["ip_configuration"]
+  subnet_id             = data.azurerm_subnet.subnet_id.id
+  tags                  = var.tags
+  storage_account_name  = var.storage_account_name
+  pip_name              = var.linux_vm_01["pip_name"]
+  pip_allocation        = var.linux_vm_01["pip_allocation"]
 }
 
 ##############################################

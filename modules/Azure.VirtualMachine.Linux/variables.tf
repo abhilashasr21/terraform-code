@@ -1,3 +1,12 @@
+variable "pip_name" {
+  type = string
+}
+
+variable "pip_allocation" {
+  type = string
+  default = "Dynamic"
+}
+
 variable "nic_name" {
   type = string
 }

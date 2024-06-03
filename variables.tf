@@ -41,27 +41,9 @@ variable "subnets" {
 #                    NSG                     #
 ##############################################
 
-variable "nsg1" {
-  type = object({
-    name        = string
-    subnet_name = string
-  })
+variable "nsg_name" {
+  type = string
 }
-
-variable "nsg_rules" {
-  type = map(object({
-    name                       = string
-    priority                   = number
-    direction                  = string
-    access                     = string
-    protocol                   = string
-    source_port_range          = list(string)
-    destination_port_range     = list(string)
-    source_address_prefix      = string
-    destination_address_prefix = string
-  }))
-}
-
 ##############################################
 #             Virtual Machine                #
 ##############################################
@@ -86,6 +68,8 @@ variable "linux_vm_01" {
       private_ip_address_allocation = string
       private_ip_address            = string
     }))
+    pip_name = string
+    pip_allocation = string
   })
 }
 

@@ -7,11 +7,9 @@ cd /
 #sudo dnf update
 #For Red Hat
 sudo dnf install python2 -y
-
-
 sudo update-alternatives --remove-all python
 sudo ln -sf /bin/python2 /bin/python
-
+sudo dnf install policycoreutils-python-utils -y
 # Install any necessary packages or configurations for diagnostics
 # Example: Install sysstat for performance monitoring
 #sudo apt-get install -y sysstat
