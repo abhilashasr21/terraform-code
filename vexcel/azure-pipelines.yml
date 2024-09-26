@@ -1,0 +1,48 @@
+trigger:
+- main  # or any branch you want to trigger the pipeline
+
+pool:
+  vmImage: 'ubuntu-latest'  # or 'windows-latest' depending on your environment
+
+variables:
+  terraformVersion: '1.9.0'  # specify the Terraform version you want to use
+
+stages:
+- stage: TerraformPlan
+  jobs:
+  - job: Plan
+    steps:
+    - checkout: self
+
+    - script: |
+        wget https://releases.hashicorp.com/terraform/$(terraformVersion)/terraform_$(terraformVersion)_linux_amd64.zip
+        unzip terraform_$(terraformVersion)_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+      displayName: 'Install Terraform'
+
+    - script: terraform --version
+      displayName: 'Verify Terraform Installation'
+
+    - script: |
+        export ARM_CLIENT_ID=$(ARM_CLIENT_ID)
+        export ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)
+        export ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)
+        export ARM_TENANT_ID=$(ARM_TENANT_ID)
+        terraform init
+      displayName: 'Terraform Init'
+
+    - script: |
+        export ARM_CLIENT_ID=$(ARM_CLIENT_ID)
+        export ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)
+        export ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)
+        export ARM_TENANT_ID=$(ARM_TENANT_ID)
+        terraform plan -out=tfplan
+      displayName: 'Terraform Plan'
+
+    - script: |
+        export ARM_CLIENT_ID=$(ARM_CLIENT_ID)
+        export ARM_CLIENT_SECRET=$(ARM_CLIENT_SECRET)
+        export ARM_SUBSCRIPTION_ID=$(ARM_SUBSCRIPTION_ID)
+        export ARM_TENANT_ID=$(ARM_TENANT_ID)
+        terraform apply -auto-approve tfplan
+      displayName: 'Terraform Apply'
