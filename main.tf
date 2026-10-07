@@ -69,6 +69,7 @@ module "linux_vm_01" {
   storage_account_name  = var.storage_account_name
   pip_name              = var.linux_vm_01["pip_name"]
   pip_allocation        = var.linux_vm_01["pip_allocation"]
+  data_disk_name = "datadisk1"
 }
 
 ##############################################
